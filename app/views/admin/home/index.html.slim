@@ -5,7 +5,7 @@
         th Title
         th Body
         th Amount
-        th User
+        th Users
         th.text-right
     tbody
       - requests_collection.each do |request|
@@ -13,7 +13,7 @@
           td = request.title
           td = request.body
           td = request.amount
-          td = request.user.decorate.display_name
+          td = request.decorate.display_users
           td.text-right
             => link_to fa_icon('envelope'), '#', class: 'btn btn-sm btn-default'
             => link_to fa_icon('pencil'), edit_admin_request_path(request), class: 'btn btn-sm btn-primary'

@@ -7,6 +7,7 @@
       = f.input :title
       = f.input :body, as: :text
       = f.input :amount
+      = f.association :users, collection: User.clients.map{|u|[u.decorate.display_name, u.id]}, as: :check_boxes
 
       => f.button :submit, 'Update', class: 'btn btn-primary'
       = link_to 'Cancel', admin_url, class: 'btn btn-default'

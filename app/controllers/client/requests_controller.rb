@@ -32,7 +32,7 @@ class Client::RequestsController < Client::BaseController
   protected
 
   def resource_request
-    @resource_request ||= params[:id].present? ? current_user.requests.find(params[:id]) : current_user.requests.new(request_params)
+    @resource_request ||= params[:id].present? ? current_user.requests.find(params[:id]) : Request.new(request_params)
   end
 
   def request_params
