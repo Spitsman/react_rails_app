@@ -1,0 +1,15 @@
+.navbar.navbar-default.navbar-static-top
+  .container
+    .navbar-header
+      = link_to fa_icon('dashboard'), admin_path, class: "navbar-brand"
+      / = link_to "New Request", new_request_path, class: "navbar-brand"
+
+
+      ul.nav.navbar-nav.navbar-right
+        li
+          a
+            => current_user.decorate.display_name
+            strong
+              | (Admin)
+        li
+          = link_to fa_icon('sign-out', text: 'Sign out'), sign_out_path, method: :delete

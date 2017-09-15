@@ -1,4 +1,4 @@
-class HomeController < ApplicationController
+class Client::HomeController < Client::BaseController
 
   helper_method :requests_collection
 

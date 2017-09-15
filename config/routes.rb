@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root to: 'home#index'
+  root to: 'client/home#index'
 
   get 'sign_in' => 'user_sessions#new'
   post 'sign_in' => 'user_sessions#create'
@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   post 'sign_up' => 'users#create'
 
 
-  resources :requests
+  resources :requests, controller: 'client/requests'
 
   namespace :admin do
     get '/' => 'home#index'

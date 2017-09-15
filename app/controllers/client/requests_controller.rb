@@ -1,4 +1,4 @@
-class RequestsController < ApplicationController
+class Client::RequestsController < Client::BaseController
 
   helper_method :resource_request
 
