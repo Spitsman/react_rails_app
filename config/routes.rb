@@ -13,7 +13,11 @@ Rails.application.routes.draw do
 
   namespace :admin do
     get '/' => 'home#index'
-    resources :requests, only: [:edit, :update, :destroy]
+
+    resources :requests, only: [:edit, :update, :destroy] do
+      resource :answer, controller: 'requests/answers'
+    end
+
   end
 
 end

@@ -5,6 +5,7 @@
         th Title
         th Body
         th Amount
+        th Answered?
         th Users
         th.text-right
     tbody
@@ -13,9 +14,10 @@
           td = request.title
           td = request.body
           td = request.amount
+          td = request.answered? ? '✓' : '-'
           td = request.decorate.display_users
           td.text-right
-            => link_to fa_icon('envelope'), '#', class: 'btn btn-sm btn-default'
+            => link_to fa_icon('envelope'), edit_admin_request_answer_path(request, request.answer), class: 'btn btn-sm btn-default'
             => link_to fa_icon('pencil'), edit_admin_request_path(request), class: 'btn btn-sm btn-primary'
             => link_to fa_icon('trash'), admin_request_path(request), method: 'delete', data: { confirm: 'Are you sure?'}, class: 'btn btn-danger btn-sm'
 - else

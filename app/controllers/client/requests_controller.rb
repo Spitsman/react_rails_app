@@ -32,7 +32,13 @@ class Client::RequestsController < Client::BaseController
   protected
 
   def resource_request
-    @resource_request ||= params[:id].present? ? current_user.requests.find(params[:id]) : Request.new(request_params)
+    if params[:id].present?
+      @resource_request = current_user.requests.find(params[:id])
+    else
+      @resource_request = Request.new(request_params)
+      @resource_request.users << current_user
+      @resource_request
+    end
   end
 
   def request_params
