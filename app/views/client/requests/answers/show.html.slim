@@ -1,0 +1,29 @@
+.page-header
+  h1 Show Answer
+
+.row
+  .col-md-6
+    .well
+      p
+        strong
+          ' Title:
+        = resource_request.title
+      p
+        strong
+          ' Body:
+        = resource_request.body
+      p
+        strong
+          ' Amount:
+        = resource_request.amount
+
+  .col-md-6
+    .well
+      p
+        - if resource_request.answer.present?
+          strong
+            ' Answer:
+          = resource_request.answer.body
+        - else
+          em Not answered yet
+

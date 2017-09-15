@@ -8,8 +8,9 @@ Rails.application.routes.draw do
   get 'sign_up' => 'users#new'
   post 'sign_up' => 'users#create'
 
-
-  resources :requests, controller: 'client/requests'
+  resources :requests, controller: 'client/requests', except: [:index, :show] do
+    resource :answer, controller: 'client/requests/answers'
+  end
 
   namespace :admin do
     get '/' => 'home#index'
