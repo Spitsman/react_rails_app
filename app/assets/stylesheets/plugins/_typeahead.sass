@@ -1,0 +1,36 @@
+.twitter-typeahead
+  flex: 1 1 0
+  clear: both
+
+// Fake form-control
+.tt-hint
+  display: none
+.twitter-typeahead
+  position: relative
+  display: block!important
+
+.tt-menu
+  margin: 35px 0 0 0px
+  width: 500px
+  background: #fff
+  border: 1px solid $gray-lighter
+  box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.4)
+  border-radius: 0 0 $input-border-radius / 2 $input-border-radius / 2
+
+.tt-suggestion
+  margin: 0
+  padding: 10px 20px
+  cursor: pointer
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1)
+  &:last-child
+    border: none
+  &:hover, &.tt-cursor
+    color: $link-color
+    background: #f4f4f4
+
+.tt-highlight
+  background-color: #fffbcf
+.tt-dataset-padding
+  padding: 10px 0px
+.tt-dataset-padding
+  padding: 10px

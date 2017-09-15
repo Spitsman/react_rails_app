@@ -1,0 +1,13 @@
+.row.margin-top-40
+  .col-md-6.col-md-offset-3
+    .well
+      legend
+         | New User
+
+      = simple_form_for resource_user, as: :user, url: sign_up_url, method: :post, html: { class: 'login__form' } do |f|
+        = f.input :first_name
+        = f.input :last_name
+        = f.input :email
+        = f.input :password
+        = f.input :password_confirmation
+        = f.button :submit, 'Sign Up', class: 'btn btn-primary'
