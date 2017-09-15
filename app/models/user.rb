@@ -7,7 +7,7 @@ class User < ActiveRecord::Base
   validates :first_name, presence: true
   validates :last_name, presence: true
 
-  has_many :requests
+  has_many :requests, dependent: :destroy
 
   def client?
     !self.admin?

@@ -1,0 +1,23 @@
+- if requests_collection.any?
+  table.table.table-middled
+    thead
+      tr
+        th Title
+        th Body
+        th Amount
+        th User
+        th.text-right
+    tbody
+      - requests_collection.each do |request|
+        tr
+          td = request.title
+          td = request.body
+          td = request.amount
+          td = request.user.decorate.display_name
+          td.text-right
+            => link_to fa_icon('envelope'), '#', class: 'btn btn-sm btn-default'
+            => link_to fa_icon('pencil'), edit_admin_request_path(request), class: 'btn btn-sm btn-primary'
+            => link_to fa_icon('trash'), admin_request_path(request), method: 'delete', data: { confirm: 'Are you sure?'}, class: 'btn btn-danger btn-sm'
+- else
+  center
+    h3.text-muted No requests found.
