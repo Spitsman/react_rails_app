@@ -21,7 +21,10 @@ class Admin::RequestsController < Admin::BaseController
   protected
 
   def resource_request
-    @resource_request ||= Request.find(params[:id])
+    return @resource_request if defined? @resource_request
+    @resource_request = Request.find(params[:id])
+    @resource_request.current_user = current_user
+    @resource_request
   end
 
   def request_params

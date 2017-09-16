@@ -16,4 +16,8 @@ class User < ActiveRecord::Base
     !self.admin?
   end
 
+  def role
+    self.admin? ? 'admin' : 'client'
+  end
+
 end

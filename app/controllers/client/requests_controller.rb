@@ -37,8 +37,9 @@ class Client::RequestsController < Client::BaseController
     else
       @resource_request = Request.new(request_params)
       @resource_request.users << current_user
-      @resource_request
     end
+    @resource_request.current_user = current_user
+    @resource_request
   end
 
   def request_params

@@ -17,6 +17,7 @@ Rails.application.routes.draw do
 
     resources :requests, only: [:edit, :update, :destroy] do
       resource :answer, controller: 'requests/answers'
+      resources :histories, only: [:index], controller: 'requests/histories'
     end
 
   end
