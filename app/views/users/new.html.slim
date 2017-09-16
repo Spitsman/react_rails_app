@@ -10,4 +10,5 @@
         = f.input :email
         = f.input :password
         = f.input :password_confirmation
-        = f.button :submit, 'Sign Up', class: 'btn btn-primary'
+        => f.button :submit, 'Sign Up', class: 'btn btn-primary'
+        = link_to 'Back', sign_in_path, class: 'btn btn-default'

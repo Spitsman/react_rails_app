@@ -32,6 +32,7 @@ class Client::RequestsController < Client::BaseController
   protected
 
   def resource_request
+    return @resource_request if defined? @resource_request
     if params[:id].present?
       @resource_request = current_user.requests.find(params[:id])
     else

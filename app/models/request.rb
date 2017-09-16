@@ -4,7 +4,7 @@ class Request < ActiveRecord::Base
 
   has_and_belongs_to_many :users
   has_one :answer, dependent: :destroy
-  has_many :histories
+  has_many :histories, dependent: :destroy
 
   validates :title, presence: true
   validates :body, presence: true
