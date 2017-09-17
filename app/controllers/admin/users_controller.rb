@@ -7,6 +7,8 @@ class Admin::UsersController < Admin::BaseController
 
   def create
     if resource_user.save
+      UserMailer.registration_confirmation(resource_user).deliver
+      flash[:success] = "Please confirm new manager`s email address to activate account"
       redirect_to admin_users_path
     else
       render action: :new

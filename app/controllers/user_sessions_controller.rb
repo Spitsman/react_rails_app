@@ -1,6 +1,6 @@
 class UserSessionsController < ApplicationController
 
-  layout 'clean'
+  layout 'auth'
 
   skip_filter :require_user, except: [:destroy]
 
@@ -13,10 +13,16 @@ class UserSessionsController < ApplicationController
 
   def create
     if resource_session.save
-      if current_user.client?
-        redirect_to root_url
+      if current_user.email_confirmed
+        flash[:notice] = 'You signed in'
+        if current_user.client?
+          redirect_to root_url
+        else
+          redirect_to admin_url
+        end
       else
-        redirect_to admin_url
+        flash[:error] = 'Activate your account following the instructions in the email'
+        render action: :new
       end
     else
       render :action => :new

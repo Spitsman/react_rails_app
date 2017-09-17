@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170916115752) do
+ActiveRecord::Schema.define(version: 20170917204602) do
 
   create_table "answers", force: :cascade do |t|
     t.string   "body",       null: false
@@ -56,6 +56,8 @@ ActiveRecord::Schema.define(version: 20170916115752) do
     t.string   "persistence_token"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "email_confirmed",   default: false
+    t.string   "confirm_token"
   end
 
 end

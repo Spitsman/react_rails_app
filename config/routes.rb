@@ -8,6 +8,8 @@ Rails.application.routes.draw do
   get 'sign_up' => 'users#new'
   post 'sign_up' => 'users#create'
 
+  get 'confirm_email/:token' => 'users#confirm_email', as: 'confirm_email'
+
   resources :requests, controller: 'client/requests', except: [:index, :show] do
     resource :answer, controller: 'client/requests/answers'
   end
