@@ -1,0 +1,11 @@
+table.table.table-middled
+  thead
+    tr
+      th Name
+  tbody
+    - users_collection.each do |user|
+      tr
+        td = user.decorate.display_name
+        / td.text-right
+          => link_to fa_icon('pencil'), edit_admin_request_path(request), class: 'btn btn-sm btn-primary'
+          => link_to fa_icon('trash'), admin_request_path(request), method: 'delete', data: { confirm: 'Are you sure?'}, class: 'btn btn-danger btn-sm'

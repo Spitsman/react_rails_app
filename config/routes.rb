@@ -20,6 +20,7 @@ Rails.application.routes.draw do
       resources :histories, only: [:index], controller: 'requests/histories'
     end
 
+    resources :users
   end
 
 end

@@ -4,11 +4,4 @@
       legend
          | New User
 
-      = simple_form_for resource_user, as: :user, url: sign_up_url, method: :post, html: { class: 'login__form' } do |f|
-        = f.input :first_name
-        = f.input :last_name
-        = f.input :email
-        = f.input :password
-        = f.input :password_confirmation
-        => f.button :submit, 'Sign Up', class: 'btn btn-primary'
-        = link_to 'Back', sign_in_path, class: 'btn btn-default'
+      = render partial: 'users/shared/form', locals: { user: resource_user, url: sign_up_url }
