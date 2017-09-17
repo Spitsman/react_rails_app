@@ -19,7 +19,7 @@
 
     = simple_form_for resource_answer, as: :answer, url: admin_request_answer_url(resource_request, resource_answer), html: { class: 'login__form' } do |f|
 
-      = f.input :body, as: :text
+      = f.input :body, as: :text, label: 'Answer'
 
       => f.button :submit, 'Save', class: 'btn btn-primary'
       = link_to 'Cancel', admin_url, class: 'btn btn-default'

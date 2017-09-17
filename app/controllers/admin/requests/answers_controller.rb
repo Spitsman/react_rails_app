@@ -4,6 +4,8 @@ class Admin::Requests::AnswersController < Admin::BaseController
 
   def create
     if resource_answer.save
+      UserMailer.answer_notification(resource_request, current_user).deliver
+      flash[:success] = "Email notification was sent to client"
       redirect_to admin_path
     else
       render action: :edit
