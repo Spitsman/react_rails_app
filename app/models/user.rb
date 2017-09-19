@@ -12,6 +12,7 @@ class User < ActiveRecord::Base
 
   scope :clients, -> { where(admin: false) }
   scope :admins, -> { where(admin: true) }
+  scope :unconfirmed, -> { where(email_confirmed: false) }
 
   before_create :generate_confirmation_token
 
@@ -27,6 +28,16 @@ class User < ActiveRecord::Base
     self.email_confirmed = true
     self.confirm_token = nil
     save!(:validate => false)
+  end
+
+  def self.check_unconfirmed
+    self.unconfirmed.each do |user|
+      UserMailer.registration_confirmation_reminder(user).deliver
+
+      self.admins.each do |admin|
+        UserMailer.unconfirmed_user_reminder(user, admin).deliver
+      end
+    end
   end
 
   protected

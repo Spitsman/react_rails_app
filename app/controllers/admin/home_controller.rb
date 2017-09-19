@@ -8,7 +8,7 @@ class Admin::HomeController < Admin::BaseController
   protected
 
   def requests_collection
-    @requests_collection ||= Request.all
+    @requests_collection ||= Request.all.decorate
   end
 
 end

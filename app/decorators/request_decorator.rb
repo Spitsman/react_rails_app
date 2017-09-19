@@ -6,4 +6,8 @@ class RequestDecorator < Draper::Decorator
     source.users.decorate.collect(&:display_name).join(', ')
   end
 
+  def display_answered
+    source.answered? ? '✓' : '-'
+  end
+
   end
