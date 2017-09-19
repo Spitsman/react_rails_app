@@ -30,16 +30,6 @@ class User < ActiveRecord::Base
     save!(:validate => false)
   end
 
-  def self.check_unconfirmed
-    self.unconfirmed.each do |user|
-      UserMailer.registration_confirmation_reminder(user).deliver
-
-      self.admins.each do |admin|
-        UserMailer.unconfirmed_user_reminder(user, admin).deliver
-      end
-    end
-  end
-
   protected
 
   def generate_confirmation_token

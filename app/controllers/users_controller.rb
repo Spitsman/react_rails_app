@@ -12,6 +12,7 @@ class UsersController < ApplicationController
   def create
     if resource_user.save
       UserMailer.registration_confirmation(resource_user).deliver
+      RegistrationRemindWorker.perform_in(24.hours, resource_user.id)
       flash[:success] = "Please confirm your email address to continue"
       redirect_to sign_in_url
     else
