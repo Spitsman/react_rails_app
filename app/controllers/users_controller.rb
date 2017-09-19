@@ -5,6 +5,7 @@ class UsersController < ApplicationController
   helper_method :resource_user
 
   skip_filter :require_user
+  before_filter :require_no_user, only: [:new]
 
   def new
   end
@@ -24,8 +25,8 @@ class UsersController < ApplicationController
     user = User.find_by_confirm_token(params[:token])
     if user.present?
       user.email_activate!
-      flash[:success] = "Your email has been confirmed. Please sign in to continue."
-      redirect_to sign_in_url
+      flash[:success] = "Your email has been confirmed."
+      redirect_to user.admin? ? admin_url : root_url
     else
       flash[:error] = "Sorry. User does not exist"
       redirect_to sign_in_url

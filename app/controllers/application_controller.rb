@@ -21,6 +21,12 @@ class ApplicationController < ActionController::Base
     redirect_to sign_in_url if current_user.nil?
   end
 
+  def require_no_user
+    if current_user.present? && current_user.email_confirmed?
+      redirect_to current_user.admin? ? admin_url : root_url
+    end
+  end
+
   def require_admin
     require_user
     redirect_to root_path unless current_user.admin?

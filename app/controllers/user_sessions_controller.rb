@@ -3,8 +3,7 @@ class UserSessionsController < ApplicationController
   layout 'auth'
 
   skip_filter :require_user, except: [:destroy]
-
-  # before_filter :require_no_user, except: [:destroy]
+  before_filter :require_no_user, only: [:new]
 
   helper_method :resource_session
 
@@ -21,7 +20,7 @@ class UserSessionsController < ApplicationController
           redirect_to admin_url
         end
       else
-        flash[:error] = 'Activate your account following the instructions in the email'
+        flash[:error] = 'You should activate your account before sign in. Check your email.'
         render action: :new
       end
     else
