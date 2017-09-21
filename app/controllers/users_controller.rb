@@ -25,7 +25,7 @@ class UsersController < ApplicationController
     user = User.find_by_confirm_token(params[:token])
     if user.present?
       user.email_activate!
-      flash[:success] = "Your email has been confirmed."
+      flash[:success] = "Email has been confirmed."
       redirect_to user.admin? ? admin_url : root_url
     else
       flash[:error] = "Sorry. User does not exist"
