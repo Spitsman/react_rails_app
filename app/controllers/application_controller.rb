@@ -4,8 +4,14 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   before_filter :require_user
+  before_action :load_authlogic
+  before_action :set_paper_trail_whodunnit
 
   helper_method :current_user
+
+  def load_authlogic
+    Authlogic::Session::Base.controller = Authlogic::ControllerAdapters::RailsAdapter.new(self)
+  end
 
   def current_user_session
     return @current_user_session if defined?(@current_user_session)

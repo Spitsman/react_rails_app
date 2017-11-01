@@ -11,7 +11,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170917204602) do
+ActiveRecord::Schema.define(version: 20171031212338) do
+
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
 
   create_table "answers", force: :cascade do |t|
     t.string   "body",       null: false
@@ -19,16 +22,6 @@ ActiveRecord::Schema.define(version: 20170917204602) do
     t.integer  "request_id", null: false
     t.datetime "created_at"
     t.datetime "updated_at"
-  end
-
-  create_table "histories", force: :cascade do |t|
-    t.integer  "user_id",    null: false
-    t.string   "user_role",  null: false
-    t.datetime "created_at", null: false
-    t.string   "old_value"
-    t.string   "new_value",  null: false
-    t.string   "field",      null: false
-    t.integer  "request_id", null: false
   end
 
   create_table "requests", force: :cascade do |t|
@@ -44,7 +37,7 @@ ActiveRecord::Schema.define(version: 20170917204602) do
     t.integer "user_id",    null: false
   end
 
-  add_index "requests_users", ["request_id", "user_id"], name: "index_requests_users_on_request_id_and_user_id", unique: true
+  add_index "requests_users", ["request_id", "user_id"], name: "index_requests_users_on_request_id_and_user_id", unique: true, using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                             null: false
@@ -59,5 +52,17 @@ ActiveRecord::Schema.define(version: 20170917204602) do
     t.boolean  "email_confirmed",   default: false
     t.string   "confirm_token"
   end
+
+  create_table "versions", force: :cascade do |t|
+    t.string   "item_type",      null: false
+    t.integer  "item_id",        null: false
+    t.string   "event",          null: false
+    t.string   "whodunnit"
+    t.text     "object"
+    t.datetime "created_at"
+    t.text     "object_changes"
+  end
+
+  add_index "versions", ["item_type", "item_id"], name: "index_versions_on_item_type_and_item_id", using: :btree
 
 end

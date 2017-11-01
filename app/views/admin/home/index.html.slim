@@ -17,7 +17,7 @@
           td = request.display_answered
           td = request.display_users
           td.text-right
-            => link_to fa_icon('book'), admin_request_histories_path(request), class: 'btn btn-sm btn-warning'
+            => link_to fa_icon('book'), admin_request_versions_path(request), class: 'btn btn-sm btn-warning'
             => link_to fa_icon('envelope'), edit_admin_request_answer_path(request), class: 'btn btn-sm btn-success'
             => link_to fa_icon('pencil'), edit_admin_request_path(request), class: 'btn btn-sm btn-primary'
             => link_to fa_icon('trash'), admin_request_path(request), method: 'delete', data: { confirm: 'Are you sure?'}, class: 'btn btn-danger btn-sm'
