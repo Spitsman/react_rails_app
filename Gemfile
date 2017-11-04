@@ -31,8 +31,12 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
+source 'https://rails-assets.org' do
+  gem 'rails-assets-bootstrap-sass'
+  gem 'rails-assets-toastr'
+end
+
 gem 'slim'
-gem 'rails-assets-bootstrap-sass'
 gem 'font-awesome-rails'
 gem 'authlogic'
 gem 'bcrypt'
@@ -40,7 +44,6 @@ gem 'simple_form'
 gem 'simple_form_bootstrap3'
 gem 'draper'
 gem 'letter_opener'
-gem 'rails-assets-toastr'
 gem 'sidekiq'
 gem 'pg'
 gem 'paper_trail'

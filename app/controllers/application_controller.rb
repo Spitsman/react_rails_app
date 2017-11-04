@@ -5,7 +5,6 @@ class ApplicationController < ActionController::Base
 
   before_filter :require_user
   before_action :load_authlogic
-  before_action :set_paper_trail_whodunnit
 
   helper_method :current_user
 

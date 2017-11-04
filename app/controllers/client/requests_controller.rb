@@ -2,6 +2,8 @@ class Client::RequestsController < Client::BaseController
 
   helper_method :resource_request
 
+  before_action :set_paper_trail_whodunnit
+
   def new
   end
 

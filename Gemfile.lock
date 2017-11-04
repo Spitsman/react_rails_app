@@ -1,5 +1,6 @@
 GEM
   remote: https://rubygems.org/
+  remote: https://rails-assets.org/
   specs:
     actionmailer (4.2.5)
       actionpack (= 4.2.5)
@@ -108,8 +109,8 @@ GEM
     multi_json (1.12.2)
     nokogiri (1.8.0)
       mini_portile2 (~> 2.2.0)
-    paper_trail (5.2.2)
-      activerecord (>= 3.0, < 6.0)
+    paper_trail (7.1.1)
+      activerecord (>= 4.0, < 5.2)
       request_store (~> 1.1)
     pg (0.19.0)
     rack (1.6.8)
@@ -227,8 +228,8 @@ DEPENDENCIES
   paper_trail
   pg
   rails (= 4.2.5)
-  rails-assets-bootstrap-sass
-  rails-assets-toastr
+  rails-assets-bootstrap-sass!
+  rails-assets-toastr!
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)
   sidekiq
