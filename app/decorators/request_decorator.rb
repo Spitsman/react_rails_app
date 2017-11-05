@@ -10,4 +10,8 @@ class RequestDecorator < Draper::Decorator
     source.answered? ? '✓' : '-'
   end
 
+  def display_amount
+    h.number_to_currency source.amount
+  end
+
   end
