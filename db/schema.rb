@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171031212338) do
+ActiveRecord::Schema.define(version: 20180203103604) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,6 +22,14 @@ ActiveRecord::Schema.define(version: 20171031212338) do
     t.integer  "request_id", null: false
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "matches", force: :cascade do |t|
+    t.integer "first_team_id"
+    t.integer "second_team_id"
+    t.integer "first_team_score"
+    t.integer "second_team_score"
+    t.date    "date"
   end
 
   create_table "requests", force: :cascade do |t|
@@ -38,6 +46,11 @@ ActiveRecord::Schema.define(version: 20171031212338) do
   end
 
   add_index "requests_users", ["request_id", "user_id"], name: "index_requests_users_on_request_id_and_user_id", unique: true, using: :btree
+
+  create_table "teams", force: :cascade do |t|
+    t.string  "name"
+    t.boolean "favorite"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                             null: false

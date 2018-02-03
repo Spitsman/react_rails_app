@@ -1,0 +1,30 @@
+= react_component 'Matches', {data: @matches}
+
+  / { data: [{date: '01.01.2017', title: 'test1', amount: 100},
+           {date: '02.01.2017', title: 'test2', amount: 200}]}
+/ - if requests_collection.any?
+/   table.table.table-middled
+/     thead
+/       tr
+/         th Title
+/         th Body
+/         th.text-right Amount
+/         th Answered?
+/         th Users
+/         th.text-right
+/     tbody
+/       - requests_collection.each do |request|
+/         tr
+/           td = request.title
+/           td = request.body
+/           td.text-right = request.display_amount
+/           td = request.display_answered
+/           td = request.display_users
+/           td.text-right
+/             => link_to fa_icon('book'), admin_request_versions_path(request), class: 'btn btn-sm btn-warning'
+/             => link_to fa_icon('envelope'), edit_admin_request_answer_path(request), class: 'btn btn-sm btn-success'
+/             => link_to fa_icon('pencil'), edit_admin_request_path(request), class: 'btn btn-sm btn-primary'
+/             => link_to fa_icon('trash'), admin_request_path(request), method: 'delete', data: { confirm: 'Are you sure?'}, class: 'btn btn-danger btn-sm'
+/ - else
+/   center
+/     h3.text-muted No requests found.

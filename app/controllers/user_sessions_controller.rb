@@ -12,17 +12,7 @@ class UserSessionsController < ApplicationController
 
   def create
     if resource_session.save
-      if current_user.email_confirmed
-        flash[:notice] = 'You signed in'
-        if current_user.client?
-          redirect_to root_url
-        else
-          redirect_to admin_url
-        end
-      else
-        flash[:error] = 'You should activate your account before sign in. Check your email.'
-        render action: :new
-      end
+      redirect_to root_url
     else
       render :action => :new
     end

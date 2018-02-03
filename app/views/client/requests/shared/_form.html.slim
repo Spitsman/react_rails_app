@@ -1,7 +1,0 @@
-= simple_form_for request, as: :request, url: url do |f|
-  = f.input :title
-  = f.input :body, as: :text
-  = f.input :amount
-
-  => f.button :submit, "#{request.persisted? ? 'Update' : 'Create'}", class: 'btn btn-primary'
-  = link_to 'Cancel', root_path, class: 'btn btn-default'

@@ -1,5 +1,15 @@
 Rails.application.routes.draw do
-  root to: 'client/home#index'
+  root to: 'matches#index'
+
+  post '/' => 'matches#create'
+
+  resources :matches
+
+  resources :teams do
+    member do
+      get 'toggle_favorite', action: 'toggle_favorite'
+    end
+  end
 
   get 'sign_in' => 'user_sessions#new'
   post 'sign_in' => 'user_sessions#create'
@@ -7,22 +17,5 @@ Rails.application.routes.draw do
 
   get 'sign_up' => 'users#new'
   post 'sign_up' => 'users#create'
-
-  get 'confirm_email/:token' => 'users#confirm_email', as: 'confirm_email'
-
-  resources :requests, controller: 'client/requests', except: [:index, :show] do
-    resource :answer, controller: 'client/requests/answers'
-  end
-
-  namespace :admin do
-    get '/' => 'home#index'
-
-    resources :requests, only: [:edit, :update, :destroy] do
-      resource :answer, controller: 'requests/answers'
-      resources :versions, only: [:index], controller: 'requests/versions'
-    end
-
-    resources :users
-  end
 
 end

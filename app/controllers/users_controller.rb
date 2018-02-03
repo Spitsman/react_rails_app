@@ -12,24 +12,9 @@ class UsersController < ApplicationController
 
   def create
     if resource_user.save
-      UserMailer.registration_confirmation(resource_user).deliver
-      RegistrationRemindWorker.perform_in(24.hours, resource_user.id)
-      flash[:success] = "Please confirm your email address to continue"
-      redirect_to sign_in_url
+      redirect_to root_url
     else
       render action: :new
-    end
-  end
-
-  def confirm_email
-    user = User.find_by_confirm_token(params[:token])
-    if user.present?
-      user.email_activate!
-      flash[:success] = "Email has been confirmed."
-      redirect_to user.admin? ? admin_url : root_url
-    else
-      flash[:error] = "Sorry. User does not exist"
-      redirect_to sign_in_url
     end
   end
 

@@ -32,14 +32,4 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  def require_admin
-    require_user
-    redirect_to root_path unless current_user.admin?
-  end
-
-  def require_client
-    require_user
-    redirect_to admin_url unless current_user.client?
-  end
-
 end
