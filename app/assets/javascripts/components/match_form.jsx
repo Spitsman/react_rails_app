@@ -13,13 +13,13 @@ this.MatchForm = React.createClass({
       <div>
         <form className='form-inline' onSubmit={this.handleSubmit}>
           <div className='form-group'>
-            <input name='first_team_id' type='number' className='form-control' placeholder='First team id' value={this.state.first_team_id} onChange={this.handleChange}/>
-            <input name='second_team_id' type='number' className='form-control' placeholder='Second team id' value={this.state.second_team_id} onChange={this.handleChange}/>
-            <input name='first_team_score' type='number' className='form-control' placeholder='First team score' value={this.state.first_team_score} onChange={this.handleChange}/>
-            <input name='second_team_score' type='number' className='form-control' placeholder='Second team score' value={this.state.second_team_score} onChange={this.handleChange}/>
-            <input name='date' type='text' className='form-control' placeholder='Date' value={this.state.date} onChange={this.handleChange}/>
-            <button type='submit' className='btn btn-primary' disabled={!this.valid()}>
-              Create
+            <input name='first_team_id' type='number' className='form-control-sm' placeholder='Id 1-й команды' value={this.state.first_team_id} onChange={this.handleChange}/>
+            <input name='second_team_id' type='number' className='form-control-sm' placeholder='Id 2-й команды' value={this.state.second_team_id} onChange={this.handleChange}/>
+            <input name='first_team_score' type='number' className='form-control-sm' placeholder='Счет 1-й команды' value={this.state.first_team_score} onChange={this.handleChange}/>
+            <input name='second_team_score' type='number' className='form-control-sm' placeholder='Счет 2-й команды' value={this.state.second_team_score} onChange={this.handleChange}/>
+            <input name='date' type='text' className='form-control-sm' placeholder='Дата' value={this.state.date} onChange={this.handleChange}/>
+            <button type='submit' className='btn btn-sm btn-primary' disabled={!this.valid()}>
+              Создать
             </button>
           </div>
         </form>

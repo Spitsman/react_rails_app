@@ -27,17 +27,17 @@ this.Matches = React.createClass({
 
     return (
       <div>
-        <h2>Matches</h2>
+        <h2>Матчи</h2>
         <MatchForm handleNewMatch={this.addMatch} />
         <hr/>
         <table className='table table-bordered'>
           <thead>
             <tr>
-              <th>First team</th>
-              <th>Second team</th>
-              <th>First team score</th>
-              <th>Second team score</th>
-              <th>Date</th>
+              <th>Первая команда</th>
+              <th>Вторая команда</th>
+              <th>Счет первой команды</th>
+              <th>Счет второй команды</th>
+              <th>Дата</th>
             </tr>
           </thead>
           <tbody>

@@ -10,9 +10,9 @@ this.TeamForm = React.createClass({
       <div>
         <form className='form-inline' onSubmit={this.handleSubmit}>
           <div className='form-group'>
-            <input name='name' type='text' className='form-control' placeholder='Name' value={this.state.name} onChange={this.handleChange}/>
+            <input name='name' type='text' className='form-control' placeholder='Название' value={this.state.name} onChange={this.handleChange}/>
             <button type='submit' className='btn btn-primary' disabled={!this.valid()}>
-              Create
+              Создать
             </button>
           </div>
         </form>

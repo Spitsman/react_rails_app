@@ -42,11 +42,11 @@ this.ShowTeam = React.createClass({
             <table className='table table-bordered'>
               <thead>
                 <tr>
-                  <th>First team</th>
-                  <th>Second team</th>
-                  <th>First team score</th>
-                  <th>Second team score</th>
-                  <th>Date</th>
+                  <th>Первая команда</th>
+                  <th>Вторая команта</th>
+                  <th>Счет первой команды</th>
+                  <th>Счет второй команды</th>
+                  <th>Дата</th>
                 </tr>
               </thead>
               <tbody>

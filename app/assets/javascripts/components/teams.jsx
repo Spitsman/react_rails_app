@@ -26,15 +26,15 @@ this.Teams = React.createClass({
 
     return (
       <div>
-        <h2>Teams</h2>
+        <h2>Команды</h2>
         <TeamForm handleNewTeam={this.addTeam} />
         <hr/>
         <table className='table table-bordered'>
           <thead>
             <tr>
               <th>Id</th>
-              <th>Name</th>
-              <th>Favorite</th>
+              <th>Название</th>
+              <th>Фаворит?</th>
             </tr>
           </thead>
           <tbody>
