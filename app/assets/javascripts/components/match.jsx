@@ -13,7 +13,13 @@ this.Match = React.createClass({
             id={firstTeam.id}
           />
         </td>
-        <td> {this.props.match.second_team} </td>
+        <td>
+          <TeamName
+            favorite={secondTeam.favorite}
+            name={secondTeam.name}
+            id={secondTeam.id}
+          />
+        </td>
         <td> {this.props.match.first_team_score} </td>
         <td> {this.props.match.second_team_score} </td>
         <td> {this.props.match.date} </td>

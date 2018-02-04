@@ -1,22 +1,19 @@
 class MatchesController < ApplicationController
 
   def index
-    @matches = Match.all.map{ |m| MatchRepresenter.new.(m) }
+    @matches = Match.order(:id).map{ |m| MatchRepresenter.new.(m) }
   end
 
   def create
-    if resource_match.save
-      render json: MatchRepresenter.new.(resource_match)
+    @match = Match.new(match_params)
+    if @match.save
+      render json: MatchRepresenter.new.(@match)
     else
-      render json: resource_match.errors
+      render json: @match.errors
     end
   end
 
   protected
-
-  def resource_match
-    @resource_match ||= Match.new(match_params)
-  end
 
   def match_params
     params.fetch(:match, {}).permit!

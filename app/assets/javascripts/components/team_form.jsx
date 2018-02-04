@@ -11,7 +11,6 @@ this.TeamForm = React.createClass({
         <form className='form-inline' onSubmit={this.handleSubmit}>
           <div className='form-group'>
             <input name='name' type='text' className='form-control' placeholder='Name' value={this.state.name} onChange={this.handleChange}/>
-            <input name='favorite' type='text' className='form-control' placeholder='Favorite' value={this.state.favorite} onChange={this.handleChange}/>
             <button type='submit' className='btn btn-primary' disabled={!this.valid()}>
               Create
             </button>
@@ -21,7 +20,7 @@ this.TeamForm = React.createClass({
     )
   },
   valid: function() {
-    return this.state.name && this.state.favorite
+    return this.state.name
   },
   handleChange: function(e) {
     let a = e.target.name
