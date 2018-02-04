@@ -20,6 +20,12 @@ this.ShowTeam = React.createClass({
   render: function() {
     const buttonClass = this.state.team.favorite ? 'btn btn-success' : 'btn btn-default'
     const buttonText = this.state.team.favorite ? 'You like this' : 'Like'
+    const matches = this.state.team.matches.map((match) =>
+      <Match
+        key={match.id}
+        match={match}
+      />
+    );
 
     return (
       <div>
@@ -32,17 +38,33 @@ this.ShowTeam = React.createClass({
           <h2>{this.state.team.name}</h2>
         </div>
         <div className='page-body'>
-          <div className='col-md-6'>
+          <div className='col-md-12'>
+            <table className='table table-bordered'>
+              <thead>
+                <tr>
+                  <th>First team</th>
+                  <th>Second team</th>
+                  <th>First team score</th>
+                  <th>Second team score</th>
+                  <th>Date</th>
+                </tr>
+              </thead>
+              <tbody>
+                { matches }
+              </tbody>
+            </table>
+          </div>
+          <div className='col-md-12'>
             <dl>
               <dt>Mаксимальное количество забитых голов в сыгранных матчах</dt>
               <dd>{ this.state.team.max_scoring_goal_count }</dd>
               <dt>Mаксимальное количество пропущенных голов в сыгранных матчах</dt>
               <dd>{ this.state.team.max_missed_goal_count }</dd>
+              <dt>Команда-конкурент, близкая по количеству очков за турнир</dt>
+              <dd>{ `${this.state.team.team_with_closest_score.name} – ${this.state.team.team_with_closest_score.total_score}` }</dd>
+              <dt>Команда с максимальным отрывом по очкам</dt>
+              <dd>{ `${this.state.team.team_with_max_score_margin.name} – ${this.state.team.team_with_max_score_margin.total_score}` }</dd>
             </dl>
-
-          </div>
-          <div className='col-md-6'>
-            test
           </div>
         </div>
       </div>

@@ -1,14 +1,15 @@
 class MatchesController < ApplicationController
 
   def index
-    @matches = Match.order(:id).map{ |m| MatchRepresenter.new.(m) }
+    @matches = Match.order(:id).includes(:teams).includes(:teams_in_matches).map{ |m| Match::IndexRepresenter.new.(m) }
   end
 
   def create
     puts match_params
+
     @match = CreateMatchService.new.(match_params)
     if @match
-      render json: MatchRepresenter.new.(@match)
+      render json: Match::IndexRepresenter.new.(@match)
     else
       render json: {}, status: :unprocessable_entity
     end

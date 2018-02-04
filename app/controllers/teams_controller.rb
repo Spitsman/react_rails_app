@@ -1,17 +1,17 @@
 class TeamsController < ApplicationController
 
   def index
-    @teams = Team.order(:id).map{ |t| TeamRepresenter.new.(t) }
+    @teams = Team.order(:id).map{ |t| Team::IndexRepresenter.new.(t) }
   end
 
   def show
-    @team = TeamRepresenter.new.call Team.find(params[:id])
+    @team = Team::ShowRepresenter.new.call Team.find(params[:id])
   end
 
   def create
     @team = Team.new(team_params)
     if @team.save
-      render json: TeamRepresenter.new.(@team)
+      render json: Team::IndexRepresenter.new.(@team)
     else
       render json: @team.errors, status: :unprocessable_entity
     end
@@ -20,7 +20,7 @@ class TeamsController < ApplicationController
   def toggle_favorite
     team = Team.find(params[:id])
     team.toggle_favorite!
-    render json: {team: TeamRepresenter.new.(team)}
+    render json: {team: Team::ShowRepresenter.new.(team)}
   end
 
   protected

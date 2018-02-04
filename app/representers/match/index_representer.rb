@@ -1,4 +1,4 @@
-class MatchRepresenter
+class Match::IndexRepresenter
 
   def call(match)
     {

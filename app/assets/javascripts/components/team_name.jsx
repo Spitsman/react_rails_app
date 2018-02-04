@@ -9,7 +9,7 @@ this.TeamName = React.createClass({
     }
 
     return (
-      <a href={`teams/${this.props.id}`}>
+      <a href={`/teams/${this.props.id}`}>
         { text }
       </a>
     )
