@@ -5,7 +5,7 @@ class TeamsController < ApplicationController
   end
 
   def show
-    @team = Team.find(params[:id])
+    @team = TeamRepresenter.new.call Team.find(params[:id])
   end
 
   def create
@@ -20,7 +20,7 @@ class TeamsController < ApplicationController
   def toggle_favorite
     team = Team.find(params[:id])
     team.toggle_favorite!
-    render json: {team: team}
+    render json: {team: TeamRepresenter.new.(team)}
   end
 
   protected

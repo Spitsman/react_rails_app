@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180203103604) do
+ActiveRecord::Schema.define(version: 20180204073021) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,11 +25,7 @@ ActiveRecord::Schema.define(version: 20180203103604) do
   end
 
   create_table "matches", force: :cascade do |t|
-    t.integer "first_team_id"
-    t.integer "second_team_id"
-    t.integer "first_team_score"
-    t.integer "second_team_score"
-    t.date    "date"
+    t.date "date"
   end
 
   create_table "requests", force: :cascade do |t|
@@ -50,6 +46,12 @@ ActiveRecord::Schema.define(version: 20180203103604) do
   create_table "teams", force: :cascade do |t|
     t.string  "name"
     t.boolean "favorite"
+  end
+
+  create_table "teams_in_matches", force: :cascade do |t|
+    t.integer "team_id"
+    t.integer "match_id"
+    t.integer "score"
   end
 
   create_table "users", force: :cascade do |t|

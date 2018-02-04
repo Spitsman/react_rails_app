@@ -2,6 +2,7 @@ this.Team = React.createClass({
   render: function() {
     return (
       <tr>
+        <td> {this.props.team.id} </td>
         <td>
           <TeamName
             favorite={this.props.team.favorite}

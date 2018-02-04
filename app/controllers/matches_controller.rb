@@ -5,18 +5,19 @@ class MatchesController < ApplicationController
   end
 
   def create
-    @match = Match.new(match_params)
-    if @match.save
+    puts match_params
+    @match = CreateMatchService.new.(match_params)
+    if @match
       render json: MatchRepresenter.new.(@match)
     else
-      render json: @match.errors
+      render json: {}, status: :unprocessable_entity
     end
   end
 
   protected
 
   def match_params
-    params.fetch(:match, {}).permit!
+    params.fetch(:match, {}).permit(:first_team_id, :second_team_id, :first_team_score, :second_team_score, :date)
   end
 
 end

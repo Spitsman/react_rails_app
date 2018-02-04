@@ -30,7 +30,20 @@ this.ShowTeam = React.createClass({
             </button>
           </div>
           <h2>{this.state.team.name}</h2>
+        </div>
+        <div className='page-body'>
+          <div className='col-md-6'>
+            <dl>
+              <dt>Mаксимальное количество забитых голов в сыгранных матчах</dt>
+              <dd>{ this.state.team.max_scoring_goal_count }</dd>
+              <dt>Mаксимальное количество пропущенных голов в сыгранных матчах</dt>
+              <dd>{ this.state.team.max_missed_goal_count }</dd>
+            </dl>
 
+          </div>
+          <div className='col-md-6'>
+            test
+          </div>
         </div>
       </div>
     )
