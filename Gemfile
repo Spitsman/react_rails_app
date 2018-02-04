@@ -39,15 +39,8 @@ end
 gem 'react-rails', '~> 1.0'
 gem 'slim'
 gem 'font-awesome-rails'
-gem 'authlogic'
-gem 'bcrypt'
-gem 'simple_form'
-gem 'simple_form_bootstrap3'
 gem 'draper'
-gem 'letter_opener'
-gem 'sidekiq'
 gem 'pg'
-gem 'paper_trail'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
