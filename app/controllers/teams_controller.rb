@@ -26,7 +26,7 @@ class TeamsController < ApplicationController
   protected
 
   def team_params
-    params.fetch(:team, {}).permit(:name, :favorite)
+    params.fetch(:team, {}).permit(:name)
   end
 
 end

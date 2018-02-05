@@ -1,8 +1,7 @@
 this.TeamForm = React.createClass({
   getInitialState: function() {
     return {
-      name: '',
-      favorite: ''
+      name: ''
     };
   },
   render: function() {
@@ -29,16 +28,29 @@ this.TeamForm = React.createClass({
 
     return this.setState(b)
   },
+
+
   handleSubmit: function(e) {
     e.preventDefault();
-    $.post('teams', {
-      team: this.state
-    }, (function(_this) {
-      return function(data) {
-        _this.props.handleNewTeam(data);
-        return _this.setState(_this.getInitialState());
-      };
-    })(this), 'JSON');
+
+    var self = this;
+
+    $.ajax({
+      type: "POST",
+      url: "teams",
+      data: {
+        team: {
+          name: this.state.name
+        }
+      },
+      success: function (data) {
+        self.props.handleNewTeam(data);
+        self.setState(self.getInitialState());
+      },
+      error: function(data) {
+        console.log(data)
+      }
+    });
   }
 
 })

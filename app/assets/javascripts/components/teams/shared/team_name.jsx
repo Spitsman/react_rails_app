@@ -1,7 +1,8 @@
 this.TeamName = React.createClass({
 
   render: function() {
-    console.log(this.props.favorite);
+    var text;
+    
     if (this.props.favorite) {
       text = <strong>{this.props.name}</strong>;
     } else {

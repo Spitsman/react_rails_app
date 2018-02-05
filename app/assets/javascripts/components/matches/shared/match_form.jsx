@@ -5,12 +5,18 @@ this.MatchForm = React.createClass({
       second_team_id: '',
       first_team_score: '',
       second_team_score: '',
-      date: ''
+      date: '',
+      formError: false
     };
   },
   render: function() {
     return (
       <div>
+        { this.state.formError &&
+          <div className='alert alert-danger'>
+            Введены неверные данные
+          </div>
+        }
         <form className='form-inline' onSubmit={this.handleSubmit}>
           <div className='form-group'>
             <input name='first_team_id' type='number' className='form-control-sm' placeholder='Id 1-й команды' value={this.state.first_team_id} onChange={this.handleChange}/>
@@ -41,13 +47,28 @@ this.MatchForm = React.createClass({
 
   handleSubmit: function(e) {
     e.preventDefault();
-    $.post('matches', {
-      match: this.state
-    }, (function(_this) {
-      return function(data) {
-        _this.props.handleNewMatch(data);
-        return _this.setState(_this.getInitialState());
-      };
-    })(this), 'JSON');
+
+    var self = this;
+
+    $.ajax({
+      type: "POST",
+      url: "matches",
+      data: {
+        match: {
+          first_team_id: this.state.first_team_id,
+          second_team_id: this.state.second_team_id,
+          first_team_score: this.state.first_team_score,
+          second_team_score: this.state.second_team_score,
+          date: this.state.date
+        }
+      },
+      success: function (data) {
+        self.props.handleNewMatch(data);
+        self.setState(self.getInitialState());
+      },
+      error: function(data) {
+        self.setState({formError: true});
+      }
+    });
   }
 })

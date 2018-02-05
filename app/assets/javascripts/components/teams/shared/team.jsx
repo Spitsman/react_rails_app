@@ -10,7 +10,7 @@ this.Team = React.createClass({
             id={this.props.team.id}
           />
         </td>
-        <td> {this.props.team.favorite_sign} </td>
+        <td> {this.props.team.favorite ? '✓' : '–'} </td>
       </tr>
     )
   }

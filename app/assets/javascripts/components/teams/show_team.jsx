@@ -11,7 +11,6 @@ this.ShowTeam = React.createClass({
     $.get(`${this.state.team.id}/toggle_favorite`, {
     }, (function(_this) {
       return function(data) {
-        console.log(data)
         return _this.setState(data);
       };
     })(this), 'JSON');
