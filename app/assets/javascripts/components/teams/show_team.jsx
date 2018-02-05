@@ -20,12 +20,6 @@ this.ShowTeam = React.createClass({
   render: function() {
     const buttonClass = this.state.team.favorite ? 'btn btn-success' : 'btn btn-default'
     const buttonText = this.state.team.favorite ? 'You like this' : 'Like'
-    const matches = this.state.team.matches.map((match) =>
-      <Match
-        key={match.id}
-        match={match}
-      />
-    );
 
     return (
       <div>
@@ -39,20 +33,7 @@ this.ShowTeam = React.createClass({
         </div>
         <div className='page-body'>
           <div className='col-md-12'>
-            <table className='table table-bordered'>
-              <thead>
-                <tr>
-                  <th>Первая команда</th>
-                  <th>Вторая команта</th>
-                  <th>Счет первой команды</th>
-                  <th>Счет второй команды</th>
-                  <th>Дата</th>
-                </tr>
-              </thead>
-              <tbody>
-                { matches }
-              </tbody>
-            </table>
+            <MatchesTable matches={this.state.team.matches} />
           </div>
           <div className='col-md-12'>
             <dl>

@@ -18,32 +18,14 @@ this.Matches = React.createClass({
   },
 
   render: function() {
-    const matches = this.state.matches.map((match) =>
-      <Match
-        key={match.id}
-        match={match}
-      />
-    );
+
 
     return (
       <div>
         <h2>Матчи</h2>
         <MatchForm handleNewMatch={this.addMatch} />
         <hr/>
-        <table className='table table-bordered'>
-          <thead>
-            <tr>
-              <th>Первая команда</th>
-              <th>Вторая команда</th>
-              <th>Счет первой команды</th>
-              <th>Счет второй команды</th>
-              <th>Дата</th>
-            </tr>
-          </thead>
-          <tbody>
-            { matches }
-          </tbody>
-        </table>
+        <MatchesTable matches={this.state.matches} />
       </div>
     )
   }
