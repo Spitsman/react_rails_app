@@ -1,1 +1,1 @@
-= react_component 'Matches', { data: @matches }
+= react_component 'Matches', { matches: @matches, teams: Team.all.map{ |t| {id: t.id, name: t.name, favorite: t.favorite} } }

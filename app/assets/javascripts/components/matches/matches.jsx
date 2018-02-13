@@ -1,13 +1,15 @@
 this.Matches = React.createClass({
   getInitialState: function(){
     return {
-      matches: this.props.data
+      matches: this.props.matches,
+      teams: this.props.teams
     };
   },
 
   getDefaultProps: function() {
     return {
-      matches: []
+      matches: [],
+      teams: []
     }
   },
 
@@ -18,12 +20,10 @@ this.Matches = React.createClass({
   },
 
   render: function() {
-
-
     return (
       <div>
         <h2>Матчи</h2>
-        <MatchForm handleNewMatch={this.addMatch} />
+        <MatchForm handleNewMatch={this.addMatch} teams={this.state.teams} />
         <hr/>
         <MatchesTable matches={this.state.matches} />
       </div>

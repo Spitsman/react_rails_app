@@ -6,6 +6,7 @@ class TeamsController < ApplicationController
 
   def show
     @team = Team::ShowRepresenter.new.call Team.find(params[:id])
+    # @team = Team.find(params[:id])
   end
 
   def create

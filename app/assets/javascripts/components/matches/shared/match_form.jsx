@@ -10,6 +10,7 @@ this.MatchForm = React.createClass({
     };
   },
   render: function() {
+
     return (
       <div>
         { this.state.formError &&
@@ -19,12 +20,14 @@ this.MatchForm = React.createClass({
         }
         <form className='form-inline' onSubmit={this.handleSubmit}>
           <div className='form-group'>
-            <input name='first_team_id' type='number' className='form-control-sm' placeholder='Id 1-й команды' value={this.state.first_team_id} onChange={this.handleChange}/>
-            <input name='second_team_id' type='number' className='form-control-sm' placeholder='Id 2-й команды' value={this.state.second_team_id} onChange={this.handleChange}/>
-            <input name='first_team_score' type='number' className='form-control-sm' placeholder='Счет 1-й команды' value={this.state.first_team_score} onChange={this.handleChange}/>
-            <input name='second_team_score' type='number' className='form-control-sm' placeholder='Счет 2-й команды' value={this.state.second_team_score} onChange={this.handleChange}/>
-            <input name='date' type='text' className='form-control-sm' placeholder='Дата' value={this.state.date} onChange={this.handleChange}/>
-            <button type='submit' className='btn btn-sm btn-primary' disabled={!this.valid()}>
+            <TeamSelect placeholder='1-я команда...' name='first_team_id' teams={this.props.teams} onChange={this.handleChange} />
+            <TeamSelect placeholder='2-я команда...' name='second_team_id' teams={this.props.teams} onChange={this.handleChange} />
+
+            <input name='first_team_score' type='number' className='form-control' placeholder='Счет 1-й команды' value={this.state.first_team_score} onChange={this.handleChange}/>
+            <input name='second_team_score' type='number' className='form-control' placeholder='Счет 2-й команды' value={this.state.second_team_score} onChange={this.handleChange}/>
+            <input name='date' type='text' className='form-control' placeholder='Дата' value={this.state.date} onChange={this.handleChange}/>
+
+            <button type='submit' className='btn btn-primary' disabled={!this.valid()}>
               Создать
             </button>
           </div>
@@ -34,11 +37,7 @@ this.MatchForm = React.createClass({
   },
 
   handleChange: function(e) {
-    let a = e.target.name
-    let b = {}
-    b[a] = e.target.value
-
-    return this.setState(b)
+    return this.setState({[e.target.name]: e.target.value});
   },
 
   valid: function() {
@@ -47,7 +46,6 @@ this.MatchForm = React.createClass({
 
   handleSubmit: function(e) {
     e.preventDefault();
-
     var self = this;
 
     $.ajax({
@@ -67,6 +65,7 @@ this.MatchForm = React.createClass({
         self.setState(self.getInitialState());
       },
       error: function(data) {
+        console.log(data);
         self.setState({formError: true});
       }
     });

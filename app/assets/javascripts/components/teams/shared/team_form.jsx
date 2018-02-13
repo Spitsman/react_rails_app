@@ -22,13 +22,8 @@ this.TeamForm = React.createClass({
     return this.state.name
   },
   handleChange: function(e) {
-    let a = e.target.name
-    let b = {}
-    b[a] = e.target.value
-
-    return this.setState(b)
+    return this.setState({[e.target.name]: e.target.value})
   },
-
 
   handleSubmit: function(e) {
     e.preventDefault();

@@ -7,13 +7,18 @@ this.ShowTeam = React.createClass({
 
   handleClick: function(e) {
     e.preventDefault();
+    self = this;
 
-    $.get(`${this.state.team.id}/toggle_favorite`, {
-    }, (function(_this) {
-      return function(data) {
-        return _this.setState(data);
-      };
-    })(this), 'JSON');
+    $.ajax({
+      type: "GET",
+      url: `${this.state.team.id}/toggle_favorite`,
+      success: function (data) {
+        self.setState(data);
+      },
+      error: function(data) {
+        console.log('Fail!', data);
+      }
+    });
   },
 
   render: function() {
